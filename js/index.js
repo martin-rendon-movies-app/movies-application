@@ -59,4 +59,18 @@
     allMovies();
 
     submitBtn.addEventListener("click", addMovie);
+
+    document.querySelector("#edit-movie").addEventListener("change", function(e){
+        if("add" === this.value){
+            addMovie(e)
+        } else if ("sort" === this.value){
+            sortedMovies()
+        } else if ("edit" === this.value){
+            editedMovies()
+        }
+        console.log(this.value);
+    })
+
+
+
 })();
