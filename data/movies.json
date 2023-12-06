@@ -2,9 +2,64 @@
   "movies": [
     {
       "id": 1,
-      "title": "Shrek",
+      "title": "John Wick",
+      "rating": 4,
+      "movieSummary": "A retired hitman seeks vengeance for his beloved dog."
+    }, {
+      "id": 2,
+      "title": "The Matrix",
       "rating": 5,
-      "movieSummary": "summary."
+      "movieSummary": "A computer hacker discovers the truth about reality and his destiny."
+    }, {
+      "id": 3,
+      "title": "The Last Samurai",
+      "rating": 4,
+      "movieSummary": "An American soldier finds honor and purpose in feudal Japan."
+    }, {
+      "id": 4,
+      "title": "Braveheart",
+      "rating": 5,
+      "movieSummary": "A Scottish warrior leads a revolt against English tyranny."
+    }, {
+      "id": 5,
+      "title": "Harry Potter: Prisoner of Azkaban",
+      "rating": 3,
+      "movieSummary": "Harry Potter confronts his past and uncertain future at Hogwarts."
+    }, {
+      "id": 6,
+      "title": "Monty Python: The Quest for the Holy Grail",
+      "rating": 5,
+      "movieSummary": "King Arthur and his knights embark on a comedic quest for a legendary relic."
+    }, {
+      "id": 7,
+      "title": "Saving Private Ryan",
+      "rating": 5,
+      "movieSummary": "A group of soldiers undertake a dangerous mission to save a fellow comrade during World War II."
+    }, {
+      "id": 8,
+      "title": "Oppenheimer",
+      "rating": 5,
+      "movieSummary": "The life and impact of physicist J. Robert Oppenheimer, the father of the atomic bomb."
+    }, {
+      "id": 9,
+      "title": "The Revenant",
+      "rating": 5,
+      "movieSummary": "A frontiersman battles the wilderness and seeks revenge after a bear attack."
+    }, {
+      "id": 10,
+      "title": "Lord of the Rings: The Fellowship of the Ring",
+      "rating": 5,
+      "movieSummary": "A young hobbit begins a perilous journey to destroy a powerful ring."
+    }, {
+      "id": 11,
+      "title": "Fast and Furious",
+      "rating": 1,
+      "movieSummary": "A high-speed saga of crime, cars, and family ties."
+    }, {
+      "id": 12,
+      "title": "Air Bud",
+      "rating": 3,
+      "movieSummary": "A golden retriever becomes an unlikely basketball star."
     }
   ]
 }
