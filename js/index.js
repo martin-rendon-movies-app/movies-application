@@ -1,14 +1,16 @@
 "use strict";
 
 import selectHandler from "./select-handler.js";
+import {createMovieList} from "./edit-movies.js";
 
-export {allMovies, renderMovie}
+export {allMovies, renderMovie, movieForm};
 
 // constants************************************************************************
 const movieContainer = document.querySelector("#movie-container");
 const submitBtn = document.querySelector("#submit-btn");
 const title = document.querySelector("#title");
 const rating = document.querySelector("#rating");
+const movieForm = document.querySelector("#movie-form");
 
 // functions************************************************************************
 // fetches movies.json while 'loading'. Sends response to be rendered---------------
@@ -39,14 +41,19 @@ function renderMovie(movies) {
 function eventHandler(e) {
     const currentOption = document.querySelector("#selector-movie").value;
     if (e.target.id === "selector-movie") {
-        if (currentOption !== "sort") {
+        if (currentOption === "add") {
             title.removeEventListener("input", eventHandler);
             rating.removeEventListener("input", eventHandler);
             submitBtn.style.display = "inline-block";
-        } else {
+        } else if (currentOption === "sort") {
             title.addEventListener("input", eventHandler);
             rating.addEventListener("input", eventHandler);
             submitBtn.style.display = "none";
+        } else if (currentOption === "edit") {
+            title.removeEventListener("input", eventHandler);
+            rating.removeEventListener("input", eventHandler);
+            submitBtn.style.display = "inline-block";
+            createMovieList();
         }
     } else if (e.target.id === "title" || e.target.id === "rating") {
         selectHandler(e, currentOption);

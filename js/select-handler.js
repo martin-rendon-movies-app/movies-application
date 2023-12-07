@@ -3,7 +3,7 @@
 // Sends input information based on selector status---------------------------------
 import addMovie from "./add-movie.js";
 import sortMovies from "./sort-movies.js";
-import editMovies from "./edit-movies.js";
+import {editMovies} from "./edit-movies.js";
 
 export default function selectHandler(e, currentOption) {
     let title = document.querySelector("#title").value;
@@ -15,7 +15,7 @@ export default function selectHandler(e, currentOption) {
     } else if (currentOption === "sort") {
         sortMovies();
     } else if (currentOption === "edit") {
-        editMovies();
+        editMovies(e);
         document.querySelector("#rating").value = "";
         document.querySelector("#title").value = "";
     }
