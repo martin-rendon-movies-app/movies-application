@@ -15,7 +15,7 @@ export default function selectHandler(e, currentOption) {
     } else if (currentOption === "sort") {
         sortMovies();
     } else if (currentOption === "edit") {
-        editMovies(e);
+        editMovies();
         document.querySelector("#rating").value = "";
         document.querySelector("#title").value = "";
     }

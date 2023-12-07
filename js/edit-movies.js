@@ -4,10 +4,9 @@ import {allMovies, movieForm} from "./index.js";
 
 export {createMovieList, editMovies};
 
-// edits objects on movies.json-----------------------------------------------------
-const movieList = [];
-async function createMovieList() {
+let movieList = [];
 
+async function createMovieList() {
     const movieSelect = document.createElement
     ("select");
     movieSelect.id = "movie-select";
@@ -16,36 +15,38 @@ async function createMovieList() {
             movies.forEach(movie => {
                 const movieOption = document.createElement("option");
                 movieOption.innerText = movie.title;
+                movieOption.value = movie.id;
                 movieSelect.appendChild(movieOption);
-                const movieObj = {title:movie.title, rating: movie.rating}
-                movieList.push(movieObj)
             });
+            movieList = [...movies];
         })
         .catch(error => console.log("Error", error));
     movieForm.appendChild(movieSelect);
     movieSelect.addEventListener("change", populateMovieInfo);
 }
 
+// populates inputs with selected movie info----------------------------------------
 async function populateMovieInfo() {
-    const selectedMovie =  document.querySelector("#movie-select").value
-    const movieListTitle = movieList.map(movie => {return movie.title})
-
-    for(let i = 0; i < movieListTitle.length; i++)
-        if(i === movieListTitle.indexOf(selectedMovie)){
-            document.querySelector("#title").value = movieList[i].title
-            document.querySelector("#rating").value = movieList[i].rating
+    const id = document.querySelector("#movie-select").value;
+    for (let i = 0; i < movieList.length; i++) {
+        if (id === movieList[i].id.toString()) {
+            document.querySelector("#title").value = movieList[i].title;
+            document.querySelector("#rating").value = movieList[i].rating;
         }
+    }
 }
 
-async function editMovies(e) {
+// edits objects on movies.json-----------------------------------------------------
+async function editMovies() {
+    const id = document.querySelector("#movie-select").value;
     console.log("Edit movies func");
-    e.preventDefault();
+    // e.preventDefault();
     const newMovieObj = {
-        title: title,
-        rating: rating
+        title: document.querySelector("#title").value,
+        rating: document.querySelector("#rating").value
     };
     try {
-        const url = `http://localhost:3000/movies`;
+        const url = `http://localhost:3000/movies/${id}`;
         const options = {
             method: "PATCH",
             headers: {
@@ -54,9 +55,7 @@ async function editMovies(e) {
             body: JSON.stringify(newMovieObj)
         };
         const resp = await fetch(url, options);
-        const newMovie = await resp.json().then(data => {
-            return data;
-        }).catch(error => console.log("error" + error));
+        const newMovie = await resp.json();
         await allMovies();
         return newMovie;
     } catch (error) {
