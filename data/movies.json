@@ -20,8 +20,8 @@
     },
     {
       "id": 4,
-      "title": "Braveheart",
-      "rating": 5,
+      "title": "Bravefart",
+      "rating": "5",
       "movieSummary": "A Scottish warrior leads a revolt against English tyranny."
     },
     {
@@ -56,8 +56,8 @@
     },
     {
       "id": 10,
-      "title": "Lord of the Rings: The Fellowship of the Ring",
-      "rating": 5,
+      "title": "Lord of the Bling: The Fellowship of the Ring",
+      "rating": "1",
       "movieSummary": "A young hobbit begins a perilous journey to destroy a powerful ring."
     },
     {
@@ -91,6 +91,11 @@
       "title": "fdsagsfesfedsd",
       "rating": "fsdfasdffd",
       "id": 16
+    },
+    {
+      "title": "New Movie",
+      "rating": "2",
+      "id": 17
     }
   ]
 }

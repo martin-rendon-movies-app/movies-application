@@ -14,11 +14,17 @@ const movieForm = document.querySelector("#movie-form");
 
 // functions************************************************************************
 // fetches movies.json while 'loading'. Sends response to be rendered---------------
-async function allMovies() {
-    movieContainer.innerHTML = `<h2>Loading...</h2>`;
-    const response = await fetch("http://localhost:3000/movies").then(resp => resp.json()).catch(error => console.log("Error", error));
-    movieContainer.innerHTML = ``;
-    renderMovie(response);
+async function allMovies(movieList) {
+    if (movieList === undefined) {
+        movieContainer.innerHTML = `<h2>Loading...</h2>`;
+        const response = await fetch("http://localhost:3000/movies").then(resp => resp.json()).catch(error => console.log("Error", error));
+        movieContainer.innerHTML = ``;
+        renderMovie(response);
+    } else {
+        movieContainer.innerHTML = `<h2>Loading...</h2>`;
+        movieContainer.innerHTML = ``;
+        renderMovie(movieList);
+    }
 }
 
 // renders movies onto DOM----------------------------------------------------------
