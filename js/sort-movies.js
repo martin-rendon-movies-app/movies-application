@@ -3,10 +3,9 @@
 import {allMovies} from "./index.js";
 
 function updateRating(movieList) {
-    let filteredMovies = movieList.filter((movie, movieList.length, movieList) => {
-            return movie.rating === document.querySelector("#rating").value;
+    const filteredMovies = movieList.filter((movie) => {
+        return movie.rating.toString() === document.querySelector("#rating").value;
     });
-    console.log(filteredMovies);
     allMovies(filteredMovies);
 }
 

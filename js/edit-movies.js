@@ -7,6 +7,7 @@ export {createMovieList, editMovies};
 let movieList = [];
 
 async function createMovieList() {
+    // movieSelect.removeEventListener("change", populateMovieInfo);
     const movieSelect = document.createElement
     ("select");
     movieSelect.id = "movie-select";

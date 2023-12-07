@@ -46,19 +46,23 @@ function renderMovie(movies) {
 
 function eventHandler(e) {
     const currentOption = document.querySelector("#selector-movie").value;
+    const movieSelect = document.querySelector("#movie-select");
     if (e.target.id === "selector-movie") {
         if (currentOption === "add") {
             title.removeEventListener("input", eventHandler);
             rating.removeEventListener("input", eventHandler);
             submitBtn.style.display = "inline-block";
+            // movieSelect.style.display = "none";
         } else if (currentOption === "sort") {
             title.addEventListener("input", eventHandler);
             rating.addEventListener("input", eventHandler);
             submitBtn.style.display = "none";
+            // movieSelect.style.display = "none";
         } else if (currentOption === "edit") {
             title.removeEventListener("input", eventHandler);
             rating.removeEventListener("input", eventHandler);
             submitBtn.style.display = "inline-block";
+            // movieSelect.style.display = "inline-block";
             createMovieList();
         }
     } else if (e.target.id === "title" || e.target.id === "rating") {
