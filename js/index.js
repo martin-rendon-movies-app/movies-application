@@ -1,76 +1,65 @@
 "use strict";
 
-(() => {
-    const movieCon = document.querySelector("#movie-container");
-    const submitBtn = document.querySelector("#submit-btn");
+import selectHandler from "./select-handler.js";
 
-    async function allMovies() {
-        movieCon.innerHTML = `<h2>Loading...</h2>`;
-        const response = await fetch("http://localhost:3000/movies").then(resp => resp.json());
-        movieCon.innerHTML = ``;
-        renderMovie(response);
-    }
+export {allMovies, renderMovie}
 
-    function renderMovie(movies) {
-        movies.forEach(movie => {
-            const movieCard = document.createElement("div")
-            const movieTitle = document.createElement("h3")
-            const movieRating = document.createElement("div")
-            const movieSummary = document.createElement("p")
-            movieTitle.innerHTML = movie.title;
-            movieRating.innerHTML = movie.rating.toString();
-            movieSummary.innerHTML = movie.movieSummary;
-            movieCard.appendChild(movieTitle);
-            movieCard.appendChild(movieRating);
-            movieCard.appendChild(movieSummary);
-            movieCon.appendChild(movieCard);
-        })
-    }
+// constants************************************************************************
+const movieContainer = document.querySelector("#movie-container");
+const submitBtn = document.querySelector("#submit-btn");
+const title = document.querySelector("#title");
+const rating = document.querySelector("#rating");
 
-    async function addMovie(e) {
-        e.preventDefault();
-        const titleVal = document.querySelector("#title").value;
-        const ratingVal = document.querySelector("#rating").value;
-        const newMovieObj = {
-            title: titleVal,
-            rating: ratingVal
-        };
-        try {
-            const url = `http://localhost:3000/movies`;
-            const options = {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(newMovieObj)
-            };
-            const resp = await fetch(url, options);
-            const newMovie = await resp.json().then(data => {
-                return data
-            }).catch(error => console.log("error" + error));
-            console.log(newMovie);
-            await allMovies();
-            return newMovie;
-        } catch (error) {
-            console.error(error);
-        }
-    }
+// functions************************************************************************
+// fetches movies.json while 'loading'. Sends response to be rendered---------------
+async function allMovies() {
+    movieContainer.innerHTML = `<h2>Loading...</h2>`;
+    const response = await fetch("http://localhost:3000/movies").then(resp => resp.json()).catch(error => console.log("Error", error));
+    movieContainer.innerHTML = ``;
+    renderMovie(response);
+}
 
-    allMovies();
-
-    submitBtn.addEventListener("click", addMovie);
-
-    document.querySelector("#edit-movie").addEventListener("change", function(e){
-        if("add" === this.value){
-            addMovie(e)
-        } else if ("sort" === this.value){
-            sortedMovies()
-        } else if ("edit" === this.value){
-            editedMovies()
-        }
-        console.log(this.value);
+// renders movies onto DOM----------------------------------------------------------
+function renderMovie(movies) {
+    movies.forEach(movie => {
+        const movieCard = document.createElement("div")
+        const movieTitle = document.createElement("h3")
+        const movieRating = document.createElement("div")
+        const movieSummary = document.createElement("p")
+        movieTitle.innerHTML = movie.title;
+        movieRating.innerHTML = movie.rating.toString();
+        movieSummary.innerHTML = movie.movieSummary;
+        movieCard.appendChild(movieTitle);
+        movieCard.appendChild(movieRating);
+        movieCard.appendChild(movieSummary);
+        movieContainer.appendChild(movieCard);
     })
+}
 
+function eventHandler(e) {
+    const currentOption = document.querySelector("#selector-movie").value;
+    if (e.target.id === "selector-movie") {
+        if (currentOption !== "sort") {
+            title.removeEventListener("input", eventHandler);
+            rating.removeEventListener("input", eventHandler);
+            submitBtn.style.display = "inline-block";
+        } else {
+            title.addEventListener("input", eventHandler);
+            rating.addEventListener("input", eventHandler);
+            submitBtn.style.display = "none";
+        }
+    } else if (e.target.id === "title" || e.target.id === "rating") {
+        selectHandler(e, currentOption);
+    } else { // e.target === submit button
+        selectHandler(e, currentOption);
+    }
+}
 
+// Initializers*********************************************************************
+allMovies();
 
-})();
+// event listeners******************************************************************
+submitBtn.addEventListener("click", eventHandler);
+document.querySelector("#selector-movie").addEventListener("change", eventHandler);
+title.addEventListener("input", eventHandler);
+rating.addEventListener("input", eventHandler);
