@@ -5,14 +5,20 @@ import {allMovies, movieForm} from "./index.js";
 export {createMovieList, editMovies};
 
 // edits objects on movies.json-----------------------------------------------------
+const movieList = [];
 async function createMovieList() {
-    const movieSelect = document.createElement("select");
+
+    const movieSelect = document.createElement
+    ("select");
+    movieSelect.id = "movie-select";
     await fetch("http://localhost:3000/movies").then(resp => resp.json())
         .then(movies => {
             movies.forEach(movie => {
                 const movieOption = document.createElement("option");
                 movieOption.innerText = movie.title;
                 movieSelect.appendChild(movieOption);
+                const movieObj = {title:movie.title, rating: movie.rating}
+                movieList.push(movieObj)
             });
         })
         .catch(error => console.log("Error", error));
@@ -21,13 +27,19 @@ async function createMovieList() {
 }
 
 async function populateMovieInfo() {
-    console.log("hello");
+    const selectedMovie =  document.querySelector("#movie-select").value
+    const movieListTitle = movieList.map(movie => {return movie.title})
+
+    for(let i = 0; i < movieListTitle.length; i++)
+        if(i === movieListTitle.indexOf(selectedMovie)){
+            document.querySelector("#title").value = movieList[i].title
+            document.querySelector("#rating").value = movieList[i].rating
+        }
 }
 
 async function editMovies(e) {
     console.log("Edit movies func");
     e.preventDefault();
-    await createMovieList();
     const newMovieObj = {
         title: title,
         rating: rating
