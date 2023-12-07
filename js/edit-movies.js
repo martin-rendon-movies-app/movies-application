@@ -40,7 +40,6 @@ async function populateMovieInfo() {
 async function editMovies() {
     const id = document.querySelector("#movie-select").value;
     console.log("Edit movies func");
-    // e.preventDefault();
     const newMovieObj = {
         title: document.querySelector("#title").value,
         rating: document.querySelector("#rating").value
