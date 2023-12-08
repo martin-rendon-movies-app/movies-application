@@ -30,6 +30,7 @@ async function allMovies(movieList) {
 // renders movies onto DOM----------------------------------------------------------
 function renderMovie(movies) {
     movies.forEach(movie => {
+        const movieCardSpacer = document.createElement("div")
         const movieCard = document.createElement("div")
         const movieTitle = document.createElement("h3")
         const movieRating = document.createElement("div")
@@ -37,10 +38,13 @@ function renderMovie(movies) {
         movieTitle.innerHTML = movie.title;
         movieRating.innerHTML = movie.rating.toString();
         movieSummary.innerHTML = movie.movieSummary;
+        movieCard.classList.add("movie-card");
+        movieCardSpacer.classList.add("movie-card-spacer");
         movieCard.appendChild(movieTitle);
         movieCard.appendChild(movieRating);
         movieCard.appendChild(movieSummary);
-        movieContainer.appendChild(movieCard);
+        movieCardSpacer.appendChild(movieCard);
+        movieContainer.appendChild(movieCardSpacer);
     })
 }
 
