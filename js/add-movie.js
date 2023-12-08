@@ -9,7 +9,7 @@ export default async function addMovie(e, title, rating) {
     console.log("add movies func");
     const newMovieObj = {
         title: title,
-        rating: rating
+        rating: parseFloat(rating)
     };
     try {
         const url = `http://localhost:3000/movies`;
