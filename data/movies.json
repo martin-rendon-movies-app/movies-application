@@ -2,8 +2,8 @@
   "movies": [
     {
       "id": 1,
-      "title": "",
-      "rating": ""
+      "title": "Happy Days, Are Ahead",
+      "rating": "1"
     },
     {
       "id": 3,
@@ -54,6 +54,11 @@
       "title": "Benchwarmers",
       "rating": 2,
       "id": 20
+    },
+    {
+      "title": "the last melon",
+      "rating": 1,
+      "id": 21
     }
   ]
 }
