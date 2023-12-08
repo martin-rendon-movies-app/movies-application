@@ -2,28 +2,23 @@
 
 import {allMovies, movieForm} from "./index.js";
 
-export {createMovieList, editMovies};
+export {createMovieList, editMovies, populateMovieInfo};
 
 let movieList = [];
 
 async function createMovieList() {
-    // movieSelect.removeEventListener("change", populateMovieInfo);
-    const movieSelect = document.createElement
-    ("select");
-    movieSelect.id = "movie-select";
     await fetch("http://localhost:3000/movies").then(resp => resp.json())
         .then(movies => {
             movies.forEach(movie => {
                 const movieOption = document.createElement("option");
                 movieOption.innerText = movie.title;
                 movieOption.value = movie.id;
-                movieSelect.appendChild(movieOption);
+                document.querySelector("#movie-select").appendChild(movieOption);
             });
             movieList = [...movies];
         })
         .catch(error => console.log("Error", error));
     movieForm.appendChild(movieSelect);
-    movieSelect.addEventListener("change", populateMovieInfo);
 }
 
 // populates inputs with selected movie info----------------------------------------

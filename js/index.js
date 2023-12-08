@@ -1,7 +1,7 @@
 "use strict";
 
 import selectHandler from "./select-handler.js";
-import {createMovieList} from "./edit-movies.js";
+import {createMovieList, populateMovieInfo} from "./edit-movies.js";
 
 export {allMovies, renderMovie, movieForm};
 
@@ -11,6 +11,7 @@ const submitBtn = document.querySelector("#submit-btn");
 const title = document.querySelector("#title");
 const rating = document.querySelector("#rating");
 const movieForm = document.querySelector("#movie-form");
+const movieSelect = document.querySelector("#movie-select")
 
 // functions************************************************************************
 // fetches movies.json while 'loading'. Sends response to be rendered---------------
@@ -52,17 +53,17 @@ function eventHandler(e) {
             title.removeEventListener("input", eventHandler);
             rating.removeEventListener("input", eventHandler);
             submitBtn.style.display = "inline-block";
-            // movieSelect.style.display = "none";
+            movieSelect.style.visibility = "hidden";
         } else if (currentOption === "sort") {
             title.addEventListener("input", eventHandler);
             rating.addEventListener("input", eventHandler);
             submitBtn.style.display = "none";
-            // movieSelect.style.display = "none";
+            movieSelect.style.visibility = "hidden";
         } else if (currentOption === "edit") {
             title.removeEventListener("input", eventHandler);
             rating.removeEventListener("input", eventHandler);
             submitBtn.style.display = "inline-block";
-            // movieSelect.style.display = "inline-block";
+            movieSelect.style.visibility = "visible";
             createMovieList();
         }
     } else if (e.target.id === "title" || e.target.id === "rating") {
@@ -80,3 +81,4 @@ submitBtn.addEventListener("click", eventHandler);
 document.querySelector("#selector-movie").addEventListener("change", eventHandler);
 title.addEventListener("input", eventHandler);
 rating.addEventListener("input", eventHandler);
+movieSelect.addEventListener("change", populateMovieInfo);

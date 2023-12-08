@@ -9,7 +9,7 @@
     {
       "id": 2,
       "title": "The Matrix",
-      "rating": 5,
+      "rating": "5",
       "movieSummary": "A computer hacker discovers the truth about reality and his destiny."
     },
     {
@@ -32,14 +32,14 @@
     },
     {
       "id": 6,
-      "title": "Monty Python: The Quest for the Holy Grail",
-      "rating": 5,
+      "title": "",
+      "rating": "5",
       "movieSummary": "King Arthur and his knights embark on a comedic quest for a legendary relic."
     },
     {
       "id": 7,
-      "title": "Saving Private Ryan",
-      "rating": 5,
+      "title": "",
+      "rating": "4",
       "movieSummary": "A group of soldiers undertake a dangerous mission to save a fellow comrade during World War II."
     },
     {
