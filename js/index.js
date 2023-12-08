@@ -43,7 +43,6 @@ function renderMovie(movies) {
         movieRating.innerHTML = addStars(movie.rating);
         deleteBtn.innerText = "X";
         movieCard.classList.add("movie-card");
-        movieCard.classList.add("movie-card-anime");
         movieCardSpacer.classList.add("movie-card-spacer");
         deleteBtn.classList.add("delete-btn");
         deleteBtn.style.display = "none";
@@ -121,12 +120,24 @@ function eventHandler(e) {
 
 // Initializers*********************************************************************
 allMovies();
+setTimeout(() => {
+    const animation = document.querySelectorAll(".movie-card-anime")
+    animation.forEach(item => item.classList.remove(".movie-card-anime"))
+}, 1000)
 // getMovieCover();
 
 // event listeners******************************************************************
 submitBtn.addEventListener("click", eventHandler);
 document.querySelector("#filter-select").addEventListener("change", eventHandler);
 title.addEventListener("input", eventHandler);
+title.addEventListener("keydown", function (e) {
+    if (e.key === "Enter") {
+        e.preventDefault(); // Use this to prevent the default action
+        eventHandler(e);
+        console.log('hello');
+    }
+});
+
 rating.addEventListener("input", eventHandler);
 movieSelect.addEventListener("change", populateMovieInfo);
 

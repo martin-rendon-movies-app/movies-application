@@ -153,8 +153,9 @@ form label {
 }
 
 .movie-card-anime{
-    animation: moveInBottom .3s ease-out;
-    animation-fill-mode: backwards;
+     animation: moveInBottom .3s ease-out;
+     animation-fill-mode: backwards;
+     animation-iteration-count: 1;
 }
 
 @keyframes moveInBottom {
