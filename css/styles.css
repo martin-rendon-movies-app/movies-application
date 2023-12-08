@@ -8,3 +8,6 @@
     display: none;
 }
 
+#movie-select{
+    visibility: hidden;
+}
