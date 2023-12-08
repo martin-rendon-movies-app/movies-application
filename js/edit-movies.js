@@ -18,7 +18,6 @@ async function createMovieList() {
             movieList = [...movies];
         })
         .catch(error => console.log("Error", error));
-    movieForm.appendChild(movieSelect);
 }
 
 // populates inputs with selected movie info----------------------------------------

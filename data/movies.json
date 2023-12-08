@@ -7,12 +7,6 @@
       "movieSummary": "A retired hitman seeks vengeance for his beloved dog."
     },
     {
-      "id": 2,
-      "title": "The Matrix",
-      "rating": "5",
-      "movieSummary": "A computer hacker discovers the truth about reality and his destiny."
-    },
-    {
       "id": 3,
       "title": "The Last Samurai",
       "rating": 4,
@@ -27,20 +21,8 @@
     {
       "id": 5,
       "title": "Harry Potter: Prisoner of Azkaban",
-      "rating": 3,
+      "rating": "3",
       "movieSummary": "Harry Potter confronts his past and uncertain future at Hogwarts."
-    },
-    {
-      "id": 6,
-      "title": "",
-      "rating": "5",
-      "movieSummary": "King Arthur and his knights embark on a comedic quest for a legendary relic."
-    },
-    {
-      "id": 7,
-      "title": "",
-      "rating": "4",
-      "movieSummary": "A group of soldiers undertake a dangerous mission to save a fellow comrade during World War II."
     },
     {
       "id": 8,
@@ -68,29 +50,9 @@
     },
     {
       "id": 12,
-      "title": "Air Bud",
-      "rating": 3,
+      "title": "Air",
+      "rating": "3",
       "movieSummary": "A golden retriever becomes an unlikely basketball star."
-    },
-    {
-      "title": "asdfasdf",
-      "rating": "asdfasdfasdf",
-      "id": 13
-    },
-    {
-      "title": "asdf",
-      "rating": "asdf",
-      "id": 14
-    },
-    {
-      "title": "ewrqwrjvnsl",
-      "rating": "asdffsaf",
-      "id": 15
-    },
-    {
-      "title": "fdsagsfesfedsd",
-      "rating": "fsdfasdffd",
-      "id": 16
     },
     {
       "title": "New Movie",
@@ -101,6 +63,11 @@
       "title": "Space Balls",
       "rating": "2",
       "id": 18
+    },
+    {
+      "title": "Losers",
+      "rating": "5",
+      "id": 19
     }
   ]
 }
