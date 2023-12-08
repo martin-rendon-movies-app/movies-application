@@ -13,6 +13,7 @@ const rating = document.querySelector("#rating");
 const movieForm = document.querySelector("#movie-form");
 const movieSelect = document.querySelector("#movie-select")
 
+
 // functions************************************************************************
 // fetches movies.json while 'loading'. Sends response to be rendered---------------
 async function allMovies(movieList) {
@@ -36,18 +37,53 @@ function renderMovie(movies) {
         const movieTitle = document.createElement("h3")
         const movieRating = document.createElement("div")
         const movieSummary = document.createElement("p")
+        const deleteBtn = document.createElement("button")
         movieTitle.innerHTML = movie.title;
         movieRating.innerHTML = movie.rating.toString();
         movieSummary.innerHTML = movie.movieSummary;
+        deleteBtn.innerText = "X"
         movieCard.classList.add("movie-card");
         movieCardSpacer.classList.add("movie-card-spacer");
+        deleteBtn.classList.add("delete-btn");
+        deleteBtn.style.display = "none"
         movieCard.appendChild(movieTitle);
         movieCard.appendChild(movieRating);
         movieCard.appendChild(movieSummary);
+        movieCard.addEventListener("mouseover", showDelete);
+        movieCard.addEventListener("mouseleave", hideDelete);
         movieCardSpacer.appendChild(movieCard);
         movieContainer.appendChild(movieCardSpacer);
+        movieCard.appendChild(deleteBtn);
+        deleteBtn.addEventListener("click", async function (e) {
+            try {
+                const url = `http://localhost:3000/movies/${movie.id}`;
+                const options = {
+                    method: "DELETE",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }
+                const resp = await fetch(url, options)
+                    .catch(error => console.log("error" + error));
+                await allMovies();
+            } catch (error) {
+                console.error(error);
+            }
+        })
     })
 }
+
+function showDelete(){
+    this.lastElementChild.style.display = "block"
+}
+
+function hideDelete(){
+    this.lastElementChild.style.display = "none"
+}
+
+
+
+
 
 function eventHandler(e) {
     const currentOption = document.querySelector("#selector-movie").value;
@@ -86,3 +122,4 @@ document.querySelector("#selector-movie").addEventListener("change", eventHandle
 title.addEventListener("input", eventHandler);
 rating.addEventListener("input", eventHandler);
 movieSelect.addEventListener("change", populateMovieInfo);
+
