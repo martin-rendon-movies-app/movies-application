@@ -91,24 +91,25 @@ function hideDelete() {
 
 //Determines source of function call, sends to select-handler module----------------
 function eventHandler(e) {
-    const currentOption = document.querySelector("#selector-movie").value;
+    const currentOption = document.querySelector("#filter-select").value;
     const movieSelect = document.querySelector("#movie-select");
-    if (e.target.id === "selector-movie") {
+    const displayToggle = document.querySelector(".d-none");
+    if (e.target.id === "filter-select") {
         if (currentOption === "add") {
             title.removeEventListener("input", eventHandler);
             rating.removeEventListener("input", eventHandler);
             submitBtn.style.display = "inline-block";
-            movieSelect.style.visibility = "hidden";
+            displayToggle.style.display = "none";
         } else if (currentOption === "sort") {
             title.addEventListener("input", eventHandler);
             rating.addEventListener("input", eventHandler);
             submitBtn.style.display = "none";
-            movieSelect.style.visibility = "hidden";
+            displayToggle.style.display = "none";
         } else if (currentOption === "edit") {
             title.removeEventListener("input", eventHandler);
             rating.removeEventListener("input", eventHandler);
             submitBtn.style.display = "inline-block";
-            movieSelect.style.visibility = "visible";
+            displayToggle.style.display = "inline-block";
             createMovieList();
         }
     } else if (e.target.id === "title" || e.target.id === "rating") {
@@ -124,7 +125,7 @@ allMovies();
 
 // event listeners******************************************************************
 submitBtn.addEventListener("click", eventHandler);
-document.querySelector("#selector-movie").addEventListener("change", eventHandler);
+document.querySelector("#filter-select").addEventListener("change", eventHandler);
 title.addEventListener("input", eventHandler);
 rating.addEventListener("input", eventHandler);
 movieSelect.addEventListener("change", populateMovieInfo);

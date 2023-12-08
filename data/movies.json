@@ -2,8 +2,8 @@
   "movies": [
     {
       "id": 1,
-      "title": "John Wick",
-      "rating": 4
+      "title": "",
+      "rating": ""
     },
     {
       "id": 3,

@@ -33,8 +33,93 @@ header {
     text-align: center;
 }
 
+main {
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    max-width: 100rem;
+}
+
 #submit-btn {
     display: none;
+}
+
+#filter-select {
+    width: 10rem;
+}
+
+
+#title,
+#filter-select {
+    height: 100%;
+    border-radius: .5rem;
+    border: none;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-bottom-row {
+   height: 4rem;
+}
+
+form input,
+form select,
+form label {
+    height: 100%;
+    outline: none;
+    padding: .5rem;
+}
+
+#title-rating {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#title-rating label {
+    color: grey;
+}
+
+#movie-select {
+    padding: .5rem;
+    height: 100%;
+    border-radius: .5rem;
+    border: none;
+}
+
+#submit-btn {
+    border-radius: .5rem;
+    background-color: black;
+    color: #b0b054;
+    border: none;
+    padding: .5rem;
+    height: 100%;
+}
+
+#title-rating {
+    height: 100%;
+    display: inline-block;
+    background-color: white;
+    border: none;
+    border-radius: .5rem;
+}
+
+#title-rating label {
+    border-left: 0.1rem solid lightgrey;
+}
+
+.d-none {
+    display: none;
+}
+
+#rating {
+    height: 3rem;
+    border-radius: .5rem;
+    border: none;
 }
 
 #movie-container {

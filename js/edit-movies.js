@@ -7,17 +7,23 @@ export {createMovieList, editMovies, populateMovieInfo};
 let movieList = [];
 
 async function createMovieList() {
-    await fetch("http://localhost:3000/movies").then(resp => resp.json())
-        .then(movies => {
-            movies.forEach(movie => {
-                const movieOption = document.createElement("option");
-                movieOption.innerText = movie.title;
-                movieOption.value = movie.id;
-                document.querySelector("#movie-select").appendChild(movieOption);
-            });
-            movieList = [...movies];
-        })
-        .catch(error => console.log("Error", error));
+    const hidden = document.querySelectorAll(".d-none");
+    hidden.forEach(elem => {
+        elem.style.display = "d-none";
+    })
+    if (movieList.length === 0) {
+        await fetch("http://localhost:3000/movies").then(resp => resp.json())
+            .then(movies => {
+                movies.forEach(movie => {
+                    const movieOption = document.createElement("option");
+                    movieOption.innerText = movie.title;
+                    movieOption.value = movie.id;
+                    document.querySelector("#movie-select").appendChild(movieOption);
+                });
+                movieList = [...movies];
+            })
+            .catch(error => console.log("Error", error));
+    }
 }
 
 // populates inputs with selected movie info----------------------------------------
@@ -34,7 +40,6 @@ async function populateMovieInfo() {
 // edits objects on movies.json-----------------------------------------------------
 async function editMovies() {
     const id = document.querySelector("#movie-select").value;
-    console.log("Edit movies func");
     const newMovieObj = {
         title: document.querySelector("#title").value,
         rating: document.querySelector("#rating").value

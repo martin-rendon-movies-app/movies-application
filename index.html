@@ -12,27 +12,32 @@
     <h1>Movie Database</h1>
 </header>
 <main>
-    <section>
+    <section class="container">
         <form id="movie-form" name="movie-form">
-            <label for="selector-movie">Personalize</label>
-            <select name="selector-movie" id="selector-movie">
-                <option value="sort">Sort</option>
-                <option value="add">Add</option>
-                <option value="edit">Edit</option>
-            </select>
-            <label for="title">Title</label>
-            <input type="text" id="title">
-            <label for="rating">Rating</label>
-            <select id="rating">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
-            <label for="movie-select">Select Movie</label>
-            <select id="movie-select"></select>
-            <button id="submit-btn" type="button">Submit</button>
+            <label for="filter-select"><h3>Search, add, or edit movies!</h3></label>
+            <div class="form-bottom-row">
+                <select name="filter-select" id="filter-select">
+                    <option value="sort">Sort</option>
+                    <option value="add">Add</option>
+                    <option value="edit">Edit</option>
+                </select>
+                <div id="title-rating">
+                    <input type="text" id="title" placeholder="Title">
+                    <label for="rating">Rating</label>
+                    <select id="rating">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <div class="d-none">
+                    <label for="movie-select">Select Movie</label>
+                    <select id="movie-select"></select>
+                </div>
+                <button id="submit-btn" type="button">Submit</button>
+            </div>
         </form>
         <div id="movie-container"></div>
     </section>
