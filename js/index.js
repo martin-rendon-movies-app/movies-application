@@ -2,6 +2,8 @@
 
 import selectHandler from "./select-handler.js";
 import {createMovieList, populateMovieInfo} from "./edit-movies.js";
+// import getMovieCover from "./get-movie-cover.js";
+// import MV_KEY from "./keys.js";
 
 export {allMovies, renderMovie, movieForm};
 
@@ -12,7 +14,6 @@ const title = document.querySelector("#title");
 const rating = document.querySelector("#rating");
 const movieForm = document.querySelector("#movie-form");
 const movieSelect = document.querySelector("#movie-select")
-
 
 // functions************************************************************************
 // fetches movies.json while 'loading'. Sends response to be rendered---------------
@@ -36,27 +37,24 @@ function renderMovie(movies) {
         const movieCard = document.createElement("div")
         const movieTitle = document.createElement("h3")
         const movieRating = document.createElement("div")
-        const movieSummary = document.createElement("p")
         const deleteBtn = document.createElement("button")
         movieTitle.innerHTML = movie.title;
-        movieRating.innerHTML = movie.rating.toString();
-        movieSummary.innerHTML = movie.movieSummary;
-        deleteBtn.innerText = "X"
+        movieRating.innerHTML = addStars(movie.rating);
+        deleteBtn.innerText = "X";
         movieCard.classList.add("movie-card");
         movieCardSpacer.classList.add("movie-card-spacer");
         deleteBtn.classList.add("delete-btn");
-        deleteBtn.style.display = "none"
+        deleteBtn.style.display = "none";
         movieCard.appendChild(movieTitle);
         movieCard.appendChild(movieRating);
-        movieCard.appendChild(movieSummary);
-        movieCard.addEventListener("mouseover", showDelete);
+        movieCard.appendChild(deleteBtn);
+        movieCard.addEventListener("mouseenter", showDelete);
         movieCard.addEventListener("mouseleave", hideDelete);
         movieCardSpacer.appendChild(movieCard);
         movieContainer.appendChild(movieCardSpacer);
-        movieCard.appendChild(deleteBtn);
-        deleteBtn.addEventListener("click", async function (e) {
+        deleteBtn.addEventListener("click", async function () {
             try {
-                const url = `http://localhost:3000/movies/${movie.id}`;
+                const url = `http://localhost:3000/movies/${movie.id}`; // to keep movie.id, we chose not to use callback fn.
                 const options = {
                     method: "DELETE",
                     headers: {
@@ -73,18 +71,23 @@ function renderMovie(movies) {
     })
 }
 
-function showDelete(){
+function addStars(rating) {
+    let stars = "";
+    for (let i = 0; i < rating; i++) {
+        stars += `<i class="fa-solid fa-star" style="color: #000000;"></i>`;
+    }
+    return stars;
+}
+
+function showDelete() {
     this.lastElementChild.style.display = "block"
 }
 
-function hideDelete(){
+function hideDelete() {
     this.lastElementChild.style.display = "none"
 }
 
-
-
-
-
+//Determines source of function call, sends to select-handler module----------------
 function eventHandler(e) {
     const currentOption = document.querySelector("#selector-movie").value;
     const movieSelect = document.querySelector("#movie-select");
@@ -115,6 +118,7 @@ function eventHandler(e) {
 
 // Initializers*********************************************************************
 allMovies();
+// getMovieCover();
 
 // event listeners******************************************************************
 submitBtn.addEventListener("click", eventHandler);
