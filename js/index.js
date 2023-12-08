@@ -3,9 +3,6 @@
 import selectHandler from "./select-handler.js";
 import {createMovieList, populateMovieInfo} from "./edit-movies.js";
 import {renderMovieInitial, renderMovie} from "./render-movies.js";
-// import getMovieCover from "./get-movie-cover.js";
-// import MV_KEY from "./keys.js";
-
 
 export {allMovies, movieForm, movieContainer};
 
@@ -31,8 +28,6 @@ async function allMovies(movieList) {
         renderMovie(movieList);
     }
 }
-
-
 
 //Determines source of function call, sends to select-handler module----------------
 function eventHandler(e) {
@@ -70,7 +65,6 @@ setTimeout(() => {
     const animation = document.querySelectorAll(".movie-card-anime")
     animation.forEach(item => item.classList.remove(".movie-card-anime"))
 }, 1000)
-// getMovieCover();
 
 // event listeners******************************************************************
 submitBtn.addEventListener("click", eventHandler);

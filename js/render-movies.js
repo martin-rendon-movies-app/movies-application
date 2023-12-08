@@ -9,6 +9,7 @@ function renderMovieInitial(movies) {
     movies.forEach(movie => {
         const movieCardSpacer = document.createElement("div")
         const movieCard = document.createElement("div")
+        const moviePoster = document.createElement("div")
         const movieTitle = document.createElement("h3")
         const movieRating = document.createElement("div")
         const deleteBtn = document.createElement("button")
@@ -18,9 +19,11 @@ function renderMovieInitial(movies) {
         movieCard.classList.add("movie-card");
         movieCard.classList.add("movie-card-anime");
         movieCardSpacer.classList.add("movie-card-spacer");
+        moviePoster.classList.add("movie-poster");
         deleteBtn.classList.add("delete-btn");
         deleteBtn.style.display = "none";
         movieCard.appendChild(movieTitle);
+        movieCard.appendChild(moviePoster);
         movieCard.appendChild(movieRating);
         movieCard.appendChild(deleteBtn);
         movieCard.addEventListener("mouseenter", showDelete);
@@ -50,6 +53,7 @@ function renderMovie(movies) {
     movies.forEach(movie => {
         const movieCardSpacer = document.createElement("div")
         const movieCard = document.createElement("div")
+        const moviePoster = document.createElement("div")
         const movieTitle = document.createElement("h3")
         const movieRating = document.createElement("div")
         const deleteBtn = document.createElement("button")
@@ -58,9 +62,11 @@ function renderMovie(movies) {
         deleteBtn.innerText = "X";
         movieCard.classList.add("movie-card");
         movieCardSpacer.classList.add("movie-card-spacer");
+        moviePoster.classList.add("movie-poster");
         deleteBtn.classList.add("delete-btn");
         deleteBtn.style.display = "none";
         movieCard.appendChild(movieTitle);
+        movieCard.appendChild(moviePoster);
         movieCard.appendChild(movieRating);
         movieCard.appendChild(deleteBtn);
         movieCard.addEventListener("mouseenter", showDelete);
