@@ -5,9 +5,9 @@ import {allMovies} from "./index";
 
 export default getMovieCover
 
-async function getMovieCover() {
-    // fetch(`http://img.omdbapi.com/?apikey=${MV_KEY}&`).then(resp => resp.json()).then(data => {
-    //     console.log(data);
+     function getMovieCover() {
+     fetch(`http://img.omdbapi.com/?apikey=${MV_KEY}&`).then(resp => resp.json()).then(data => {
+         console.log(data);
     // }).catch(error => console.error(error));
     // // console.log(movieCover);
 
@@ -20,8 +20,8 @@ async function getMovieCover() {
                 'Content-Type': 'application/json'
             },
         };
-        const resp = await fetch(url, options);
-        const movieCover = await resp.json().then(data => {
+        const resp =  fetch(url, options);
+        const movieCover =  resp.json().then(data => {
             return data;
         }).catch(error => console.log("error" + error));
         console.log(movieCover);

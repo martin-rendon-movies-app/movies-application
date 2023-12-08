@@ -3,7 +3,8 @@
 import selectHandler from "./select-handler.js";
 import {createMovieList, populateMovieInfo} from "./edit-movies.js";
 // import getMovieCover from "./get-movie-cover.js";
-// import MV_KEY from "./keys.js";
+import MV_KEY from "./keys.js";
+
 
 export {allMovies, renderMovie, movieForm};
 
@@ -42,6 +43,7 @@ function renderMovie(movies) {
         movieRating.innerHTML = addStars(movie.rating);
         deleteBtn.innerText = "X";
         movieCard.classList.add("movie-card");
+        movieCard.classList.add("movie-card-anime");
         movieCardSpacer.classList.add("movie-card-spacer");
         deleteBtn.classList.add("delete-btn");
         deleteBtn.style.display = "none";

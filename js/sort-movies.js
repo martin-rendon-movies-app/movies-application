@@ -9,9 +9,12 @@ function updateRating(movieList) {
     allMovies(filteredMovies);
 }
 
+
 function sortByTitle(movieList){
-    const filteredMovies = movieList.filter((movie) => {
-        return movie.title.contains(document.querySelector("#title").value)
+         const filteredMovies = movieList.filter((movie) => {
+         const movieCards = document.querySelectorAll(".movie-card")
+             movieCards.forEach(movie => movie.classList.remove("movie-card-anime"))
+             return movie.title.toLowerCase().includes(document.querySelector("#title").value.toLowerCase().trim())
     });
     allMovies(filteredMovies);
 }

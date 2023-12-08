@@ -65,7 +65,9 @@ header {
     align-items: center;
     justify-content: space-between;
     position: relative;
+}
 
+.movie-card-anime{
     animation: moveInBottom .3s ease-out;
     animation-fill-mode: backwards;
 }
