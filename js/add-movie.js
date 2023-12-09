@@ -2,11 +2,9 @@
 
 // Creates new movie object. Posts to movies.json-----------------------------------
 import {allMovies, loading, movieContainer} from "./index.js";
-import {createMovieList} from "./edit-movies.js";
 
 export default async function addMovie(e, title, rating) {
     e.preventDefault();
-    console.log("add movies func");
     const newMovieObj = {
         title: title,
         rating: parseFloat(rating)

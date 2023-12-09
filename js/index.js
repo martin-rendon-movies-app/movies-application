@@ -84,4 +84,3 @@ title.addEventListener("keydown", function (e) {
 
 rating.addEventListener("input", eventHandler);
 movieSelect.addEventListener("change", populateMovieInfo);
-

@@ -25,23 +25,3 @@ async function selectHandler(e, currentOption) {
         document.querySelector("#title").value = "";
     }
 }
-
-// async function fetchMovies() {
-//     try {
-//         const url = `http://localhost:3000/movies`;
-//         const options = {
-//             method: "GET",
-//             headers: {
-//                 'Content-Type': 'application/json'
-//             },
-//         };
-//         const resp = await fetch(url, options);
-//         movieList = await resp.json().then(data => {
-//             return data;
-//         }).catch(error => console.log("error" + error));
-//         console.log(movieList);
-//         return movieList;
-//     } catch {
-//         console.error("error" + error);
-//     }
-// }
