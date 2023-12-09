@@ -25,6 +25,7 @@
                     <input type="text" id="title" placeholder="Title">
                     <label for="rating">Rating</label>
                     <select id="rating">
+                        <option value="all">All</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -39,7 +40,7 @@
                 <button id="submit-btn" type="button">Submit</button>
             </div>
         </form>
-        <div id="movie-container"></div>
+        <div id="movie-container"><div class="loading d-none"></div></div>
     </section>
 </main>
 <footer></footer>

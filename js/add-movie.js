@@ -2,7 +2,7 @@
 
 
 // Creates new movie object. Posts to movies.json-----------------------------------
-import { allMovies } from "./index.js";
+import {allMovies} from "./index.js";
 
 export default async function addMovie(e, title, rating) {
     e.preventDefault();

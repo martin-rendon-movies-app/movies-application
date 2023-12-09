@@ -35,11 +35,11 @@ header {
 
 main {
     display: flex;
-    justify-content: center;
 }
 
 .container {
-    max-width: 100rem;
+    max-width: 120rem;
+    margin: 5rem auto;
 }
 
 #submit-btn {
@@ -64,7 +64,8 @@ form {
 }
 
 .form-bottom-row {
-   height: 4rem;
+    height: 4rem;
+    margin-bottom: 2rem;
 }
 
 form input,
@@ -123,8 +124,37 @@ form label {
 }
 
 #movie-container {
+    /*position: relative;*/
     display: flex;
     flex-wrap: wrap;
+    background-color: rgba(114, 114, 41, 0.1);
+    border-radius: 5rem;
+    width: 100%;
+}
+
+.loading {
+    height: 10rem;
+    width: 10rem;
+    border-radius: 50%;
+    border: 2rem dotted #eeeeee;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    z-index: 100;
+    transform: translate(-50%, -50%);
+    text-align: center;
+
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
 }
 
 .movie-card-spacer {
@@ -139,10 +169,11 @@ form label {
     background: linear-gradient(to bottom, #efefc8, #b0b054);
     border-radius: 5rem;
     border: 2rem solid #8c3838;
-    padding: 4rem;
+    padding: 2rem;
     width: 100%;
-    max-width: 400px;
-    max-height: 600px;
+    min-width: 30rem;
+    max-width: 40rem;
+    max-height: 60rem;
     height: 100%;
     margin: auto;
     display: flex;
@@ -150,12 +181,18 @@ form label {
     align-items: center;
     justify-content: space-between;
     position: relative;
+    transition: .5s;
+}
+
+.movie-card:hover {
+    transform: translateY(-3rem);
+    box-shadow: 0 3rem 2rem rgba(38, 38, 38, 0.19);
 }
 
 .movie-card-anime{
-     animation: moveInBottom .3s ease-out;
-     animation-fill-mode: backwards;
-     animation-iteration-count: 1;
+    animation: moveInBottom .3s ease-out;
+    animation-fill-mode: backwards;
+    animation-iteration-count: 1;
 }
 
 @keyframes moveInBottom {
@@ -172,7 +209,8 @@ form label {
 
 .delete-btn{
     border-radius: 50%;
-    background-color: red;
+    border: none;
+    background-color: #8c3838;
     color: white;
     width: 20px;
     height: 20px;
@@ -181,17 +219,43 @@ form label {
     right: 10px;
 }
 
+.movie-poster {
+    width: 15rem;
+    height: 20rem;
+    background: linear-gradient(to bottom, #919191, #111);
+}
+
 /* Mobile styles */
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 767.98px) {
+    .container {
+        min-width: 28rem;
+    }
     .movie-card-spacer {
         width: 100%;
+    }
+    .movie-card{
+        transition: none;
+    }
+    .movie-card:hover {
+        transform: none;
+        box-shadow: none;
     }
 }
 
 /* Medium screen styles */
-@media only screen and (min-width: 768px) and (max-width: 1023px) {
+@media only screen and (min-width: 768px) and (max-width: 1199.98px) {
     .movie-card-spacer {
         width: 50%;
+    }
+    .container {
+        max-width: 85rem;
+    }
+}
+
+/* Large screen styles */
+@media only screen and (min-width: 1200px) {
+    .container {
+        min-width: 120rem;
     }
 }
 

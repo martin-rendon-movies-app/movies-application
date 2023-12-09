@@ -27,8 +27,8 @@
     },
     {
       "id": 10,
-      "title": "Lord of the Bling: The Fellowship of the Ring",
-      "rating": 1
+      "title": "Lord of the Rings: The Fellowship of the Ring",
+      "rating": "5"
     },
     {
       "id": 11,
@@ -59,6 +59,11 @@
       "title": "the last melon",
       "rating": 1,
       "id": 21
+    },
+    {
+      "title": "Last of the Mohicans",
+      "rating": 5,
+      "id": 22
     }
   ]
 }
