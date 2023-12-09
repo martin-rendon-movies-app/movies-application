@@ -90,6 +90,7 @@ function renderMovie(movies) {
             }
         });
     });
+    loading.classList.add("d-none");
 }
 
 function addStars(rating) {

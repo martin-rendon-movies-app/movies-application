@@ -1,38 +1,30 @@
 "use strict";
 
-import {allMovies, movieForm} from "./index.js";
+import {allMovies, movieForm, loading, movieContainer, filteredMovies} from "./index.js";
 
 export {createMovieList, editMovies, populateMovieInfo};
 
-let movieList = [];
-
-async function createMovieList() {
-    const hidden = document.querySelectorAll(".d-none");
-    hidden.forEach(elem => {
-        elem.style.display = "d-none";
-    })
-    if (movieList.length === 0) {
-        await fetch("http://localhost:3000/movies").then(resp => resp.json())
-            .then(movies => {
-                movies.forEach(movie => {
-                    const movieOption = document.createElement("option");
-                    movieOption.innerText = movie.title;
-                    movieOption.value = movie.id;
-                    document.querySelector("#movie-select").appendChild(movieOption);
-                });
-                movieList = [...movies];
-            })
-            .catch(error => console.log("Error", error));
+// Creates movie options to choose in order to edit---------------------------------
+async function createMovieList(movieList) {
+    document.querySelector("#movie-select").innerHTML = "";
+    if (document.querySelector("#movie-select").childNodes.length === 0) {
+        movieList.forEach(movie => {
+            const movieOption = document.createElement("option");
+            movieOption.innerText = movie.title;
+            movieOption.value = movie.id;
+            document.querySelector("#movie-select").appendChild(movieOption);
+        });
     }
+    loading.classList.add("d-none");
 }
 
 // populates inputs with selected movie info----------------------------------------
 async function populateMovieInfo() {
     const id = document.querySelector("#movie-select").value;
-    for (let i = 0; i < movieList.length; i++) {
-        if (id === movieList[i].id.toString()) {
-            document.querySelector("#title").value = movieList[i].title;
-            document.querySelector("#rating").value = movieList[i].rating;
+    for (let i = 0; i < filteredMovies.length; i++) {
+        if (id === filteredMovies[i].id.toString()) {
+            document.querySelector("#title").value = filteredMovies[i].title;
+            document.querySelector("#rating").value = filteredMovies[i].rating;
         }
     }
 }

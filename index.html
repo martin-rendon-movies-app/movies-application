@@ -10,6 +10,7 @@
 <body>
 <header>
     <h1>Movie Database</h1>
+    <div class="loading d-none"></div>
 </header>
 <main>
     <section class="container">
@@ -33,14 +34,14 @@
                         <option value="5">5</option>
                     </select>
                 </div>
-                <div class="d-none">
+                <div class="movie-select-container d-none">
                     <label for="movie-select">Select Movie</label>
                     <select id="movie-select"></select>
                 </div>
                 <button id="submit-btn" type="button">Submit</button>
             </div>
         </form>
-        <div id="movie-container"><div class="loading d-none"></div></div>
+        <div id="movie-container"></div>
     </section>
 </main>
 <footer></footer>

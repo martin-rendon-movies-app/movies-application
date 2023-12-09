@@ -5,7 +5,7 @@ import {createMovieList, populateMovieInfo} from "./edit-movies.js";
 import {renderMovie, renderMovieInitial} from "./render-movies.js";
 
 
-export {allMovies, renderMovie, movieForm, movieContainer, loading};
+export {allMovies, renderMovie, movieForm, movieContainer, loading, filteredMovies};
 
 // constants************************************************************************
 const movieContainer = document.querySelector("#movie-container");
@@ -15,22 +15,22 @@ const rating = document.querySelector("#rating");
 const movieForm = document.querySelector("#movie-form");
 const movieSelect = document.querySelector("#movie-select");
 const loading = document.querySelector(".loading");
+let filteredMovies = [];
 
 // functions************************************************************************
 // fetches movies.json while 'loading'. Sends response to be rendered---------------
 async function allMovies(movieList) {
-        loading.classList.remove("d-none");
+    loading.classList.remove("d-none");
+    movieContainer.innerHTML = "";
     if (movieList === undefined) {
-        console.log("undefined movielist");
         const response = await fetch("http://localhost:3000/movies").then(resp => resp.json()).catch(error => console.log("Error", error));
+        filteredMovies = [...response];
+        createMovieList(filteredMovies);
         loading.classList.add("d-none");
         renderMovieInitial(response);
     } else {
-        const loading = document.createElement("div");
-        loading.classList.add("loading");
-        movieContainer.appendChild(loading);
+        createMovieList(movieList);
         renderMovie(movieList);
-        loading.classList.add("d-none");
     }
 }
 
@@ -38,24 +38,26 @@ async function allMovies(movieList) {
 function eventHandler(e) {
     const currentOption = document.querySelector("#filter-select").value;
     const movieSelect = document.querySelector("#movie-select");
-    const displayToggle = document.querySelector(".d-none");
+    const movieSelectContainer = document.querySelector(".movie-select-container");
     if (e.target.id === "filter-select") {
+        title.value = "";
+        rating.value = "";
         if (currentOption === "add") {
             title.removeEventListener("input", eventHandler);
             rating.removeEventListener("input", eventHandler);
+            movieSelectContainer.style.display = "none";
             submitBtn.style.display = "inline-block";
-            displayToggle.style.display = "none";
         } else if (currentOption === "sort") {
+            allMovies();
             title.addEventListener("input", eventHandler);
             rating.addEventListener("input", eventHandler);
+            movieSelectContainer.style.display = "none";
             submitBtn.style.display = "none";
-            displayToggle.style.display = "none";
         } else if (currentOption === "edit") {
             title.removeEventListener("input", eventHandler);
             rating.removeEventListener("input", eventHandler);
+            movieSelectContainer.style.display = "inline-block";
             submitBtn.style.display = "inline-block";
-            displayToggle.style.display = "inline-block";
-            createMovieList();
         }
     } else if (e.target.id === "title" || e.target.id === "rating") {
         selectHandler(e, currentOption);
@@ -66,11 +68,6 @@ function eventHandler(e) {
 
 // Initializers*********************************************************************
 allMovies();
-setTimeout(() => {
-    const animation = document.querySelectorAll(".movie-card-anime")
-    animation.forEach(item => item.classList.remove(".movie-card-anime"))
-}, 1000)
-// getMovieCover();
 
 // event listeners******************************************************************
 submitBtn.addEventListener("click", eventHandler);

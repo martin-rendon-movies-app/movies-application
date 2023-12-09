@@ -8,7 +8,7 @@
     {
       "id": 3,
       "title": "The Last Samurai",
-      "rating": 4
+      "rating": "3"
     },
     {
       "id": 4,
@@ -37,8 +37,8 @@
     },
     {
       "id": 12,
-      "title": "Air",
-      "rating": 3
+      "title": "Air Buddies",
+      "rating": "3"
     },
     {
       "title": "Space Balls",
@@ -64,6 +64,46 @@
       "title": "Last of the Mohicans",
       "rating": 5,
       "id": 22
+    },
+    {
+      "title": "Hello World",
+      "rating": "2",
+      "id": 23
+    },
+    {
+      "title": "Sports: The Film",
+      "rating": "4",
+      "id": 24
+    },
+    {
+      "title": "Sports 2: Revenge of Balls",
+      "rating": 2,
+      "id": 25
+    },
+    {
+      "title": "Hello 5",
+      "rating": 2,
+      "id": 26
+    },
+    {
+      "title": "TMNT",
+      "rating": 3,
+      "id": 27
+    },
+    {
+      "title": "Bobby",
+      "rating": "2",
+      "id": 28
+    },
+    {
+      "title": "Hey Hey",
+      "rating": 1,
+      "id": 29
+    },
+    {
+      "title": "Poop 3",
+      "rating": 2,
+      "id": 30
     }
   ]
 }

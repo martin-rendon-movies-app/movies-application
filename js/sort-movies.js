@@ -3,7 +3,6 @@
 import {allMovies, loading} from "./index.js";
 
 function updateRating(movieList) {
-    // document.querySelector("#title").value = "";
     if (document.querySelector("#rating").value !== "all") {
         const filteredMovies = movieList.filter((movie) => {
             return movie.rating.toString() === document.querySelector("#rating").value;
@@ -33,6 +32,7 @@ function updateTitle(movieList) {
 
 // sets functionality of form inputs to filtering by title/rating-------------------
 export default function sortMovies(e, movieList) {
+    document.querySelector("#movie-container").innerHTML = "";
     if (e.target.id === "rating") {
         updateRating(movieList);
     } else {
