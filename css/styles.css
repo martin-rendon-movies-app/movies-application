@@ -13,7 +13,7 @@ html {
 body {
     background-color: #b4b441;
     background-image: url("../images/noise.png");
-    background-size: cover;
+    background-repeat: repeat;
     font-family: 'Fanwood Text', serif;
     font-size: 1.8rem;
     font-weight: 400;

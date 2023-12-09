@@ -51,6 +51,7 @@ function eventHandler(e) {
             allMovies();
             title.addEventListener("input", eventHandler);
             rating.addEventListener("input", eventHandler);
+            document.querySelector("#rating").value = "all";
             movieSelectContainer.style.display = "none";
             submitBtn.style.display = "none";
         } else if (currentOption === "edit") {
