@@ -4,7 +4,7 @@
 import addMovie from "./add-movie.js";
 import sortMovies from "./sort-movies.js";
 import {editMovies} from "./edit-movies.js";
-import {allMovies, loading, filteredMovies} from "./index.js";
+import {allMovies, filteredMovies} from "./index.js";
 
 export default selectHandler;
 
