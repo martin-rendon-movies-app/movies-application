@@ -3,9 +3,9 @@
 import selectHandler from "./select-handler.js";
 import {createMovieList, populateMovieInfo} from "./edit-movies.js";
 import {renderMovie, renderMovieInitial} from "./render-movies.js";
+import getMoviePoster from "./get-movie-poster.js";
 
-
-export {allMovies, renderMovie, movieForm, movieContainer, loading, filteredMovies};
+export {allMovies, renderMovie, movieForm, movieContainer, loading, filteredMovies, movieCards};
 
 // constants************************************************************************
 const movieContainer = document.querySelector("#movie-container");
@@ -15,6 +15,7 @@ const rating = document.querySelector("#rating");
 const movieForm = document.querySelector("#movie-form");
 const movieSelect = document.querySelector("#movie-select");
 const loading = document.querySelector(".loading");
+const movieCards = document.querySelectorAll("movie-card");
 let filteredMovies = [];
 
 // functions************************************************************************
@@ -27,6 +28,7 @@ async function allMovies(movieList) {
         filteredMovies = [...response];
         createMovieList(filteredMovies);
         loading.classList.add("d-none");
+        getMoviePoster(response);
         renderMovieInitial(response);
     } else {
         createMovieList(movieList);

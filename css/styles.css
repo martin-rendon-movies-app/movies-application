@@ -224,10 +224,15 @@ form label {
     right: 10px;
 }
 
-.movie-poster {
+.movie-poster-undef {
     width: 15rem;
     height: 20rem;
     background: linear-gradient(to bottom, #919191, #111);
+}
+
+.movie-poster {
+    width: 15rem;
+    height: 20rem;
 }
 
 /* Mobile styles */
