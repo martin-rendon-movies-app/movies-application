@@ -21,6 +21,7 @@ let filteredMovies = [];
 // functions************************************************************************
 // fetches movies.json while 'loading'. Sends response to be rendered---------------
 async function allMovies(movieList) {
+    loading.classList.remove("d-none");
     movieContainer.innerHTML = "";
     if (movieList === undefined) {
         const response = await fetch("http://localhost:3000/movies").then(resp => resp.json()).catch(error => console.log("Error", error));
@@ -66,7 +67,6 @@ function eventHandler(e) {
 
 // Initializers*********************************************************************
 allMovies();
-loading.classList.remove("d-none");
 
 // event listeners******************************************************************
 submitBtn.addEventListener("click", eventHandler);
