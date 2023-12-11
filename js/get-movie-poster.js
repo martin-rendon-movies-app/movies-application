@@ -1,7 +1,7 @@
 "use strict";
 
 import MV_KEY from "./keys.js";
-import {movieContainer, filteredMovies, renderMovie} from "./index.js"
+import {movieContainer, filteredMovies, renderMovie, loading} from "./index.js"
 
 export default getMoviePoster;
 
@@ -45,6 +45,7 @@ async function storePosters(posterLinksArr) {
         .then(resp => resp.json())
         .then(data => {
             renderMovie(data);
+            loading.classList.add("d-none");
         })
         .catch(error => console.error("Error: " + error));
 }

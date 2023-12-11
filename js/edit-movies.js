@@ -15,7 +15,6 @@ async function createMovieList(movieList) {
             document.querySelector("#movie-select").appendChild(movieOption);
         });
     }
-    loading.classList.add("d-none");
 }
 
 // populates inputs with selected movie info----------------------------------------
