@@ -1,7 +1,7 @@
 "use strict";
 
 // Creates new movie object. Posts to movies.json-----------------------------------
-import {allMovies, loading, movieContainer} from "./index.js";
+import {allMovies, movieContainer} from "./index.js";
 
 export default async function addMovie(e, title, rating) {
     e.preventDefault();

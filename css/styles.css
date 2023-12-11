@@ -129,7 +129,6 @@ form label {
 }
 
 #movie-container {
-    /*position: relative;*/
     display: flex;
     flex-wrap: wrap;
     background-color: rgba(114, 114, 41, 0.1);

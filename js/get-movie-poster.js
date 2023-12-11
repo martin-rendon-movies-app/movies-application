@@ -1,7 +1,7 @@
 "use strict";
 
 import MV_KEY from "./keys.js";
-import {movieContainer} from "./index.js"
+import {movieContainer, filteredMovies, renderMovie} from "./index.js"
 
 export default getMoviePoster;
 
@@ -12,7 +12,6 @@ async function getMoviePoster(movieList) {
             const posterLink = await fetch(`http://www.omdbapi.com/?t=${movie.title}&apikey=${MV_KEY}`)
                 .then(resp => resp.json())
                 .then(data => {
-                    console.log("Poster Link: " + data.Poster);
                     posterLinksArr.push(data.Poster);
                 })
                 .catch(error => console.log("Error: " + error));
@@ -20,21 +19,32 @@ async function getMoviePoster(movieList) {
             console.error("Error: " + error);
         }
     }
-    await renderPosters(posterLinksArr);
+    await storePosters(posterLinksArr);
 }
 
-function renderPosters(posterLinksArr) {
-    const movieCards = document.querySelectorAll(".movie-card");
-    for (let i = 0; i < movieCards.length; i++) {
-        console.log(movieCards[i]);
-        const newPoster = document.createElement("img");
-        if (posterLinksArr[i] !== undefined) {
-            newPoster.src = posterLinksArr[i];
-            newPoster.classList.add("movie-poster");
-            movieCards[i].insertBefore(newPoster, movieCards[i].firstChild.nextSibling);
-        } else {
-            newPoster.classList.add("movie-poster-undef");
-            movieCards[i].insertBefore(newPoster, movieCards[i].firstChild.nextSibling);
+async function storePosters(posterLinksArr) {
+    let i = 0;
+    for (const movie of filteredMovies) {
+        try {
+            const url = `http://localhost:3000/movies/${movie.id}`;
+            const posterURL = {poster: posterLinksArr[i]};
+            const options = {
+                method: "PATCH",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(posterURL)
+            };
+            fetch(url, options).then(resp => resp.json()).catch(error => console.error("Error: " + error));
+        } catch (error) {
+            console.error("Error: " + error);
         }
+        i++;
     }
+    fetch(`http://localhost:3000/movies/`)
+        .then(resp => resp.json())
+        .then(data => {
+            renderMovie(data);
+        })
+        .catch(error => console.error("Error: " + error));
 }

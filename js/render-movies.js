@@ -1,7 +1,6 @@
 "use strict";
 
-import {allMovies, loading, movieContainer} from './index.js'
-import getMoviePoster from "./get-movie-poster.js";
+import {allMovies, movieContainer} from './index.js'
 
 export {renderMovieInitial, renderMovie};
 
@@ -12,7 +11,14 @@ function renderMovieInitial(movies) {
             const movieCard = document.createElement("div")
             const movieTitle = document.createElement("h3")
             const movieRating = document.createElement("div")
+            const moviePoster = document.createElement("img");
             const deleteBtn = document.createElement("button")
+            if (movie.poster !== "N/A" || movie.poster !== "N/A") {
+                moviePoster.classList.add("movie-poster");
+                moviePoster.src = movie.poster;
+            } else {
+                moviePoster.classList.add("movie-poster-undef");
+            }
             movieTitle.innerHTML = movie.title;
             movieRating.innerHTML = addStars(movie.rating);
             deleteBtn.innerText = "X";
@@ -54,6 +60,13 @@ function renderMovie(movies) {
         const movieTitle = document.createElement("h3")
         const movieRating = document.createElement("div")
         const deleteBtn = document.createElement("button")
+        const moviePoster = document.createElement("img");
+        if (movie.poster !== undefined) {
+            moviePoster.classList.add("movie-poster");
+            moviePoster.src = movie.poster;
+        } else {
+            moviePoster.classList.add("movie-poster-undef");
+        }
         movieTitle.innerHTML = movie.title;
         movieRating.innerHTML = addStars(movie.rating);
         deleteBtn.innerText = "X";
@@ -62,6 +75,7 @@ function renderMovie(movies) {
         deleteBtn.classList.add("delete-btn");
         deleteBtn.style.display = "none";
         movieCard.appendChild(movieTitle);
+        movieCard.appendChild(moviePoster);
         movieCard.appendChild(movieRating);
         movieCard.appendChild(deleteBtn);
         movieCard.addEventListener("mouseenter", showDelete);
@@ -70,7 +84,7 @@ function renderMovie(movies) {
         movieContainer.appendChild(movieCardSpacer);
         deleteBtn.addEventListener("click", async function () {
             try {
-                const url = `http://localhost:3000/movies/${movie.id}`; // to keep movie.id, we chose not to use callback fn.
+                const url = `http://localhost:3000/movies/${movie.id}`;
                 const options = {
                     method: "DELETE",
                     headers: {
@@ -85,7 +99,6 @@ function renderMovie(movies) {
             }
         });
     });
-    loading.classList.add("d-none");
 }
 
 function addStars(rating) {
