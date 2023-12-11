@@ -1,6 +1,6 @@
 "use strict";
 
-import {allMovies, movieForm, loading, movieContainer, filteredMovies} from "./index.js";
+import {allMovies, filteredMovies} from "./index.js";
 
 export {createMovieList, editMovies, populateMovieInfo};
 

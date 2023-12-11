@@ -1,7 +1,8 @@
 "use strict";
 
 import MV_KEY from "./keys.js";
-import {movieContainer, filteredMovies, renderMovie, loading} from "./index.js"
+import {filteredMovies, loading} from "./index.js"
+import {renderMovie} from "./render-movies.js";
 
 export default getMoviePoster;
 

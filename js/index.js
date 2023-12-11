@@ -2,10 +2,10 @@
 
 import selectHandler from "./select-handler.js";
 import {createMovieList, populateMovieInfo} from "./edit-movies.js";
-import {renderMovie, renderMovieInitial} from "./render-movies.js";
+import {renderMovie} from "./render-movies.js";
 import getMoviePoster from "./get-movie-poster.js";
 
-export {allMovies, renderMovie, movieForm, movieContainer, loading, filteredMovies, movieCards};
+export {allMovies, movieForm, movieContainer, loading, filteredMovies, movieCards};
 
 // constants************************************************************************
 const movieContainer = document.querySelector("#movie-container");
