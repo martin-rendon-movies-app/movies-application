@@ -27,9 +27,7 @@ async function allMovies(movieList) {
         const response = await fetch("http://localhost:3000/movies").then(resp => resp.json()).catch(error => console.log("Error", error));
         filteredMovies = [...response];
         createMovieList(filteredMovies);
-        loading.classList.add("d-none");
         getMoviePoster(response);
-        renderMovieInitial(response);
     } else {
         createMovieList(movieList);
         renderMovie(movieList);
@@ -62,9 +60,7 @@ function eventHandler(e) {
             movieSelectContainer.style.display = "inline-block";
             submitBtn.style.display = "inline-block";
         }
-    } else if (e.target.id === "title" || e.target.id === "rating") {
-        selectHandler(e, currentOption);
-    } else { // e.target === submit button
+    } else {
         selectHandler(e, currentOption);
     }
 }
@@ -78,7 +74,7 @@ document.querySelector("#filter-select").addEventListener("change", eventHandler
 title.addEventListener("input", eventHandler);
 title.addEventListener("keydown", function (e) {
     if (e.key === "Enter") {
-        e.preventDefault(); // Use this to prevent the default action
+        e.preventDefault();
         eventHandler(e);
         console.log('hello');
     }

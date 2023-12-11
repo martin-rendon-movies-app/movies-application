@@ -1,6 +1,6 @@
 "use strict";
 
-import {allMovies, loading} from "./index.js";
+import {allMovies} from "./index.js";
 
 function updateRating(movieList) {
     if (document.querySelector("#rating").value !== "all") {
