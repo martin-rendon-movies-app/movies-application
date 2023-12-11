@@ -1,6 +1,6 @@
 "use strict";
 
-import {allMovies, movieContainer} from './index.js'
+import {allMovies, loading, movieContainer} from './index.js'
 
 export {renderMovieInitial, renderMovie};
 
@@ -99,6 +99,7 @@ function renderMovie(movies) {
             }
         });
     });
+    loading.classList.add("d-none");
 }
 
 function addStars(rating) {
