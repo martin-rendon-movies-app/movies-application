@@ -1,59 +1,56 @@
 "use strict";
 
 import {allMovies, loading, movieContainer} from './index.js'
+import getMoviePoster from "./get-movie-poster.js";
 
 export {renderMovieInitial, renderMovie};
 
 // renders movies onto DOM----------------------------------------------------------
 function renderMovieInitial(movies) {
-    movies.forEach(movie => {
-        const movieCardSpacer = document.createElement("div")
-        const movieCard = document.createElement("div")
-        const moviePoster = document.createElement("div")
-        const movieTitle = document.createElement("h3")
-        const movieRating = document.createElement("div")
-        const deleteBtn = document.createElement("button")
-        movieTitle.innerHTML = movie.title;
-        movieRating.innerHTML = addStars(movie.rating);
-        deleteBtn.innerText = "X";
-        movieCard.classList.add("movie-card");
-        movieCard.classList.add("movie-card-anime");
-        movieCardSpacer.classList.add("movie-card-spacer");
-        moviePoster.classList.add("movie-poster");
-        deleteBtn.classList.add("delete-btn");
-        deleteBtn.style.display = "none";
-        movieCard.appendChild(movieTitle);
-        movieCard.appendChild(moviePoster);
-        movieCard.appendChild(movieRating);
-        movieCard.appendChild(deleteBtn);
-        movieCard.addEventListener("mouseenter", showDelete);
-        movieCard.addEventListener("mouseleave", hideDelete);
-        movieCardSpacer.appendChild(movieCard);
-        movieContainer.appendChild(movieCardSpacer);
-        deleteBtn.addEventListener("click", async function () {
-            try {
-                const url = `http://localhost:3000/movies/${movie.id}`; // to keep movie.id, we chose not to use callback fn.
-                const options = {
-                    method: "DELETE",
-                    headers: {
-                        'Content-Type': 'application/json'
+        movies.forEach(movie => {
+            const movieCardSpacer = document.createElement("div")
+            const movieCard = document.createElement("div")
+            const movieTitle = document.createElement("h3")
+            const movieRating = document.createElement("div")
+            const deleteBtn = document.createElement("button")
+            movieTitle.innerHTML = movie.title;
+            movieRating.innerHTML = addStars(movie.rating);
+            deleteBtn.innerText = "X";
+            movieCard.classList.add("movie-card");
+            movieCard.classList.add("movie-card-anime");
+            movieCardSpacer.classList.add("movie-card-spacer");
+            deleteBtn.classList.add("delete-btn");
+            deleteBtn.style.display = "none";
+            movieCard.appendChild(movieTitle);
+            movieCard.appendChild(movieRating);
+            movieCard.appendChild(deleteBtn);
+            movieCard.addEventListener("mouseenter", showDelete);
+            movieCard.addEventListener("mouseleave", hideDelete);
+            movieCardSpacer.appendChild(movieCard);
+            movieContainer.appendChild(movieCardSpacer);
+            deleteBtn.addEventListener("click", async function () {
+                try {
+                    const url = `http://localhost:3000/movies/${movie.id}`; // to keep movie.id, we chose not to use callback fn.
+                    const options = {
+                        method: "DELETE",
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
                     }
+                    const resp = await fetch(url, options)
+                        .catch(error => console.log("error" + error));
+                    await allMovies();
+                } catch (error) {
+                    console.error(error);
                 }
-                const resp = await fetch(url, options)
-                    .catch(error => console.log("error" + error));
-                await allMovies();
-            } catch (error) {
-                console.error(error);
-            }
+            })
         })
-    })
 }
 
 function renderMovie(movies) {
     movies.forEach(movie => {
         const movieCardSpacer = document.createElement("div")
         const movieCard = document.createElement("div")
-        const moviePoster = document.createElement("div")
         const movieTitle = document.createElement("h3")
         const movieRating = document.createElement("div")
         const deleteBtn = document.createElement("button")
@@ -62,11 +59,9 @@ function renderMovie(movies) {
         deleteBtn.innerText = "X";
         movieCard.classList.add("movie-card");
         movieCardSpacer.classList.add("movie-card-spacer");
-        moviePoster.classList.add("movie-poster");
         deleteBtn.classList.add("delete-btn");
         deleteBtn.style.display = "none";
         movieCard.appendChild(movieTitle);
-        movieCard.appendChild(moviePoster);
         movieCard.appendChild(movieRating);
         movieCard.appendChild(deleteBtn);
         movieCard.addEventListener("mouseenter", showDelete);
