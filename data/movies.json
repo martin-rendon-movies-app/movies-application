@@ -8,16 +8,11 @@
     {
       "id": 3,
       "title": "The Last Samurai",
-      "rating": 4
+      "rating": "3"
     },
     {
       "id": 4,
       "title": "Braveheart",
-      "rating": 5
-    },
-    {
-      "id": 8,
-      "title": "Oppenheimer",
       "rating": 5
     },
     {
@@ -27,8 +22,8 @@
     },
     {
       "id": 10,
-      "title": "Lord of the Bling: The Fellowship of the Ring",
-      "rating": 1
+      "title": "Lord of the Rings: The Fellowship of the Ring",
+      "rating": "5"
     },
     {
       "id": 11,
@@ -37,8 +32,8 @@
     },
     {
       "id": 12,
-      "title": "Air",
-      "rating": 3
+      "title": "Air Buddies",
+      "rating": "3"
     },
     {
       "title": "Space Balls",
@@ -51,14 +46,49 @@
       "id": 19
     },
     {
-      "title": "Benchwarmers",
-      "rating": 2,
+      "title": "Boonchwarmers",
+      "rating": "2",
       "id": 20
     },
     {
       "title": "the last melon",
       "rating": 1,
       "id": 21
+    },
+    {
+      "title": "Last of the Mohicans",
+      "rating": 5,
+      "id": 22
+    },
+    {
+      "title": "Sports: The Film",
+      "rating": "4",
+      "id": 24
+    },
+    {
+      "title": "Sports 2: Revenge of Balls",
+      "rating": 2,
+      "id": 25
+    },
+    {
+      "title": "TMNT",
+      "rating": 3,
+      "id": 27
+    },
+    {
+      "title": "Rooboots",
+      "rating": "2",
+      "id": 31
+    },
+    {
+      "title": "Oppenheimer",
+      "rating": 4,
+      "id": 32
+    },
+    {
+      "title": "Crunchy Buckets",
+      "rating": 3,
+      "id": 33
     }
   ]
 }
